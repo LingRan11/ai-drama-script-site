@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "framework": null,
+  "installCommand": "cd app/frontend && pnpm install --frozen-lockfile",
+  "buildCommand": "cd app/frontend && pnpm build",
+  "outputDirectory": "app/frontend/dist",
+  "functions": {
+    "api/index.py": {
+      "runtime": "python3.12"
+    }
+  },
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://scriptdramaai.sbs"
+        },
+        {
+          "key": "Access-Control-Allow-Credentials",
+          "value": "true"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/index.py"
+    }
+  ]
+}

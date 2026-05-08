@@ -89,7 +89,11 @@ app = FastAPI(
 # MODULE_MIDDLEWARE_START
 app.add_middleware(
     CORSMiddleware,
-    allow_origin_regex=r".*",
+    allow_origins=[
+        "https://scriptdramaai.sbs",
+        "https://www.scriptdramaai.sbs",
+    ],
+    allow_origin_regex=r"^https://([a-zA-Z0-9-]+\.)?scriptdramaai\.sbs$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
