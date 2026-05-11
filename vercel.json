@@ -1,12 +1,12 @@
 {
   "version": 2,
   "framework": null,
-  "installCommand": "cd app/frontend && pnpm install --frozen-lockfile",
-  "buildCommand": "cd app/frontend && pnpm build",
+  "installCommand": " npm install ",
+  "buildCommand": " npm run build",
   "outputDirectory": "app/frontend/dist",
   "functions": {
     "api/index.py": {
-      "runtime": "python3.12"
+      "runtime": "python@3.12"
     }
   },
   "headers": [
@@ -28,6 +28,10 @@
     {
       "source": "/api/(.*)",
       "destination": "/api/index.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/app/frontend/index.html"
     }
   ]
 }
